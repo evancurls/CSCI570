@@ -19,21 +19,13 @@ using namespace std;
  *   empty vector<string>
  */
 
-<<<<<<< HEAD
 string insert_copy(string s, int i) {
-  string result;
-  result.reserve(s.size() * 2);
-  result.append(s, 0, i+1);
-  result.append(s);
-  result.append(s, i+1, string::npos);
-=======
-string insert_copy(const string &s, int i) {
   string result;
   result.reserve(s.size() * 2);
   result.append(s, 0, i + 1);
   result.append(s);
   result.append(s, i + 1, string::npos);
->>>>>>> 97dc783 (Optimized insert copy with one reserve)
+
   return result;
 }
 
