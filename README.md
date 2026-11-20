@@ -6,9 +6,18 @@ This is the final project for Evan Inrig and Jason Press (and more group members
 
 All materials given are located in `materials/`, including the project description and testing files.
 
-## Input Generator
+Because we're only allowed to submit `basic.cpp` and `efficient.cpp`, the code from all auxiliary files gets copied over into both `basic.cpp` and `efficient.cpp`. However, keeping versions sucks, so it's easier to have the auxiliary files serve as the "master copy" and `C-c C-v` the code from them into the tops of the submission files.
 
-This is a helper to generate the inputs. The main function is `parse_file(path)`, which parses a path and returns a `vector<string> {s1, s2}` on success. I'd imagine it's better in its own file than duplicated across many files.
+If I cared harder, I could automate it with some bash with something like
+
+```bash
+touch basic.cpp
+cat helper.cpp >> basic.cpp
+cat basic_algo.cpp >> basic.cpp
+# same for efficient.cpp
+```
+
+but that sounds like a lot of work.
 
 # Context
  - DNA strand full of bases
@@ -17,27 +26,7 @@ This is a helper to generate the inputs. The main function is `parse_file(path)`
  - similarity between strings is the minimum cost of an alignment between X and Y
 
 # TO DO
-- Make opt formula
-    - for alignment, assign gap penalty for each gap, mismatch cost for each mismatch
-    - defined as the minimum cost of an alignment between x1, xi and y1, yi
 
-    1) xm, yn is el of M:
-        OPT(m,n) = OPT(m-1,n-1) + alpha(xm, yn)
-    2) xm is not matched:
-        OPT(m,n) = OPT(m-1,n) + delta
-    3) yn is not matched, then
-        OPT(m, n) = OPT(m,n-1) + delta
-
-    if the strings match:
-    OPT(i,j) = min(
-        OPT(i - 1, j - 1) + alpha(xi, yi),
-        OPT(i - 1, j) + delta,
-        OPT(i, j - 1) + delta
-    )
-    if not:
-    OPT(i,j) = min(
-        OPT(i - 1, j) + delta,
-        OPT(i, j - 1) + delta
-    )
-
+- `efficient.cpp`
+- The plots for both basic and efficient to do the paper/summary
 
