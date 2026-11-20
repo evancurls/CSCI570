@@ -6,18 +6,32 @@
 
 using namespace std;
 
-string insert_copy(string s, int i) {
-  string first, last;
-  first = s.substr(0, i + 1);
-  // ensure last is in bounds
-  if (i < s.size()) {
-    last = s.substr(i + 1);
-  } else {
-    last = "";
-  }
-  assert(first + last == s);
-  return first + s + last;
-}
+/*
+ * parse_file(string path) -> vector<string>
+ * Args:
+ *   path: path to the file to read the input string
+ *
+ * Returns:
+ *   vector<string> of length 2
+ *     ans[0] is string a, ans[1] is string b
+ *
+ * Error:
+ *   empty vector<string>
+ */
+
+// DOES NOT WORK
+// string insert_copy(string s, int i) {
+//   string first, last;
+//   first = s.substr(0, i + 1);
+//   // ensure last is in bounds
+//   if (i < s.size()) {
+//     last = s.substr(i + 1);
+//   } else {
+//     last = "";
+//   }
+//   assert(first + last == s);
+//   return first + s + last;
+// }
 
 string iter_insert_copy(string s, int i) {
   string ret = "";
