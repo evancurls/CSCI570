@@ -19,21 +19,8 @@ using namespace std;
  *   empty vector<string>
  */
 
-// DOES NOT WORK
-// string insert_copy(string s, int i) {
-//   string first, last;
-//   first = s.substr(0, i + 1);
-//   // ensure last is in bounds
-//   if (i < s.size()) {
-//     last = s.substr(i + 1);
-//   } else {
-//     last = "";
-//   }
-//   assert(first + last == s);
-//   return first + s + last;
-// }
-
 string iter_insert_copy(string s, int i) {
+  // there is a way to not do this with iterations
   string ret = "";
   for (int j = 0; j <= i; ++j) {
     ret += s[j];
@@ -55,9 +42,11 @@ vector<string> parse_file(string path) {
 
   string s1, s2, r;
   while (getline(file, r)) {
+    // register nurse. fuck you microsoft
     if (!r.empty() && r.back() == '\r') {
-        r.pop_back();
+      r.pop_back();
     }
+
     // init s1
     if (s1.empty() && r[0] >= '9') {
       s1 = r;
@@ -70,13 +59,12 @@ vector<string> parse_file(string path) {
     // init s2
     else if (s2.empty()) {
       s2 = r;
-    } 
+    }
     // copy for s2
-    else if (0 <= r[0] && r[0] <= '9'){
+    else if (0 <= r[0] && r[0] <= '9') {
       int i = stoi(r);
       s2 = iter_insert_copy(s2, i);
     }
-    // cout << s1 << endl;
   }
   file.close();
 
@@ -92,9 +80,8 @@ int main(int argc, char *argv[]) {
   if (ans.empty()) {
     return -1;
   }
-  // cout << "String 1:" << endl;
-  // cout << "size of String 1: " << ans[0].size() << endl;
-  // cout << ans[0] << endl;
-  // cout << "String 2:" << endl;
-  // cout << ans[1] << endl;
+  cout << "String 1:" << endl;
+  cout << ans[0] << endl;
+  cout << "String 2:" << endl;
+  cout << ans[1] << endl;
 }
