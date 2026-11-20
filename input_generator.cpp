@@ -19,17 +19,13 @@ using namespace std;
  *   empty vector<string>
  */
 
-string iter_insert_copy(string s, int i) {
-  // there is a way to not do this with iterations
-  string ret = "";
-  for (int j = 0; j <= i; ++j) {
-    ret += s[j];
-  }
-  ret += s;
-  for (int j = i + 1; j < s.size(); ++j) {
-    ret += s[j];
-  }
-  return ret;
+string insert_copy(string s, int i) {
+  string result;
+  result.reserve(s.size() * 2);
+  result.append(s, 0, i+1);
+  result.append(s);
+  result.append(s, i+1, string::npos);
+  return result;
 }
 
 vector<string> parse_file(string path) {
@@ -54,7 +50,7 @@ vector<string> parse_file(string path) {
     // copy for s1
     else if (s2.empty() && '0' <= r[0] && r[0] <= '9') {
       int i = stoi(r);
-      s1 = iter_insert_copy(s1, i);
+      s1 = insert_copy(s1, i);
     }
     // init s2
     else if (s2.empty()) {
@@ -63,7 +59,7 @@ vector<string> parse_file(string path) {
     // copy for s2
     else if (0 <= r[0] && r[0] <= '9') {
       int i = stoi(r);
-      s2 = iter_insert_copy(s2, i);
+      s2 = insert_copy(s2, i);
     }
   }
   file.close();
