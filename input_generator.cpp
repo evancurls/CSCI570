@@ -68,17 +68,24 @@ vector<string> parse_file(const string &path) {
   return vector<string>{s1, s2};
 }
 
-int main(int argc, char *argv[]) {
-  if (argc != 2) {
-    cout << "usage: input_generator path/to/input_file" << endl;
-    return -1;
+int write_file(const string &path, const vector<string> ans) {
+  ofstream file(path);
+  for (string s : ans) {
+    file << s << endl;
   }
-  vector<string> ans = parse_file(argv[1]);
-  if (ans.empty()) {
-    return -1;
-  }
-  cout << "String 1:" << endl;
-  cout << ans[0] << endl;
-  cout << "String 2:" << endl;
-  cout << ans[1] << endl;
+  return 0;
 }
+// int main(int argc, char *argv[]) {
+//   if (argc != 2) {
+//     cout << "usage: input_generator path/to/input_file" << endl;
+//     return -1;
+//   }
+//   vector<string> ans = parse_file(argv[1]);
+//   if (ans.empty()) {
+//     return -1;
+//   }
+//   cout << "String 1:" << endl;
+//   cout << ans[0] << endl;
+//   cout << "String 2:" << endl;
+//   cout << ans[1] << endl;
+// }
